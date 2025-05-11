@@ -1,7 +1,4 @@
 streamlit
 tensorflow
-opencv-python
-matplotlib
 numpy
 pillow
-reportlab
