@@ -24,12 +24,23 @@ def preprocess_image(image: Image.Image):
     image_array = np.array(image) / 255.0
     return np.expand_dims(image_array, axis=0)
 
-# CSS с фоном в виде звезд
+# Добавление фона через HTML
 st.markdown("""
     <style>
-        body {
-            background: url('https://cdn.pixabay.com/photo/2017/08/30/03/26/space-2695560_960_720.jpg') no-repeat center center fixed;
+        .background {
+            background-image: url('https://cdn.pixabay.com/photo/2017/08/30/03/26/space-2695560_960_720.jpg');
             background-size: cover;
+            background-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
             color: white;
         }
         .label {
@@ -52,6 +63,9 @@ st.markdown("""
         }
     </style>
 """, unsafe_allow_html=True)
+
+# HTML для фонового изображения
+st.markdown('<div class="background"></div>', unsafe_allow_html=True)
 
 st.title("🩺 Классификация заболеваний по рентгену")
 st.markdown("Загрузите изображение грудной клетки, и модель покажет вероятность каждого заболевания.")
