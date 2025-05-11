@@ -1,6 +1,7 @@
 streamlit
-tensorflow==2.12.0
+tensorflow
 opencv-python
 matplotlib
 numpy
 pillow
+reportlab
