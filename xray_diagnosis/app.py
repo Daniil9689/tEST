@@ -12,7 +12,7 @@ CLASS_NAMES = [
 IMG_SIZE = (224, 224)
 MODEL_PATH = "xray_model.keras"
 
-st.set_page_config(page_title="Классификация заболеваний по рентгену", layout="centered")
+st.set_page_config(page_title="Классификация заболеваний по хую", layout="centered")
 
 @st.cache_resource
 def load_model():
