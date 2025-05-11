@@ -24,15 +24,20 @@ def preprocess_image(image: Image.Image):
     image_array = np.array(image) / 255.0
     return np.expand_dims(image_array, axis=0)
 
-# CSS с учётом тёмной и светлой темы
+# CSS с фоном в виде звезд
 st.markdown("""
     <style>
+        body {
+            background: url('https://cdn.pixabay.com/photo/2017/08/30/03/26/space-2695560_960_720.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
         .label {
             font-weight: 600;
             font-size: 16px;
         }
         .bar-container {
-            background-color: #e0e0e0;
+            background-color: rgba(255, 255, 255, 0.2);
             border-radius: 5px;
             height: 20px;
             margin-top: 5px;
@@ -41,6 +46,9 @@ st.markdown("""
         .bar {
             height: 100%;
             border-radius: 5px;
+        }
+        h1, h2, h3 {
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
     </style>
 """, unsafe_allow_html=True)
