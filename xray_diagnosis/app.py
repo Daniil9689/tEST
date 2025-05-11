@@ -12,7 +12,7 @@ CLASS_NAMES = [
 IMG_SIZE = (224, 224)
 MODEL_PATH = "xray_model.keras"
 
-st.set_page_config(page_title="Классификация заболеваний по хую", layout="centered")
+st.set_page_config(page_title="Классификация заболеваний по рентгену", layout="centered")
 
 @st.cache_resource
 def load_model():
@@ -24,31 +24,15 @@ def preprocess_image(image: Image.Image):
     image_array = np.array(image) / 255.0
     return np.expand_dims(image_array, axis=0)
 
-# Добавление фона через HTML
+# CSS с учётом тёмной и светлой темы
 st.markdown("""
     <style>
-        .background {
-            background-image: url('https://cdn.pixabay.com/photo/2017/08/30/03/26/space-2695560_960_720.jpg');
-            background-size: cover;
-            background-position: center;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-        .content {
-            position: relative;
-            z-index: 1;
-            color: white;
-        }
         .label {
             font-weight: 600;
             font-size: 16px;
         }
         .bar-container {
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: #e0e0e0;
             border-radius: 5px;
             height: 20px;
             margin-top: 5px;
@@ -58,14 +42,8 @@ st.markdown("""
             height: 100%;
             border-radius: 5px;
         }
-        h1, h2, h3 {
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-        }
     </style>
 """, unsafe_allow_html=True)
-
-# HTML для фонового изображения
-st.markdown('<div class="background"></div>', unsafe_allow_html=True)
 
 st.title("🩺 Классификация заболеваний по рентгену")
 st.markdown("Загрузите изображение грудной клетки, и модель покажет вероятность каждого заболевания.")
